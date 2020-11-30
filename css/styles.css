@@ -1,0 +1,15 @@
+.container {
+    width: 500px;
+    clear: both;
+    border: .5em;
+    border-style: none;
+    background-color: #a5d8f057 ;
+  }
+
+  .btn-primary {
+    color: #fff;
+    background-color: #4968f3;
+    margin:auto;
+    display:block;
+    
+}
