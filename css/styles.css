@@ -13,3 +13,13 @@
     display:block;
     
 }
+
+.list-group >item{
+  text-justify: distribute;
+
+}
+
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
