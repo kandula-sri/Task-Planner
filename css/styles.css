@@ -1,25 +1,68 @@
 .container {
-    width: 500px;
-    clear: both;
-    border: .5em;
-    border-style: none;
-    background-color: #a5d8f057 ;
-  }
-
-  .btn-primary {
-    color: #fff;
-    background-color: #4968f3;
-    margin:auto;
-    display:block;
-    
+  width: 80%;
+  clear: both;
+  border: .5em;
+  border-style: none;
+  background-color: #a5d8f057 ;
+  justify-content: center;
+ 
 }
 
-.list-group >item{
-  text-justify: distribute;
 
+
+.container-taskform {
+  width: 50%;
+  clear: both;
+  border: .5em;
+  border-style: none;
+  /*  width: auto;*/
+  background-color: #a5d8f057 ;
+  height: auto;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+  
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #7f97dad3;
+  margin:auto;
+  display:block;
+  padding:5px;
+  min-width: 80px;
+  max-width: 80px;
+       
+}
+
+.card-body{
+background-color: #b9dee9;
+}
+
+
+.button-display{
+width: 5rem;
+/* display:inline;*/
+color: #fff;
+background-color: #8db5db;
+ border-style: none;
+  
+  
+}
+
+.list-group-item{
+align-self: center;
+}
+
+/*li{justify-content: center;}
+
+.list-group-item{
+align-self: center;
 }
 
 .card-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-}
+display: flex;
+flex-wrap: wrap;
+}*/
+
+

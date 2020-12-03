@@ -6,138 +6,116 @@
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/styles.css">
 <title>TaskCard</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="background-color: #d1eefc57"">
         <div class="jumbotron">
             <h1 class="display-4 text-center">My Tasks</h1>
         </div>
-            <div id="list-items">
-                
-                    <div class="row justify-content-center ">
-                        
-                    
-                <div class="col-sm-8 col-md-4 my-3">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item"><h5 class="card-title">Html Layout</h5></li>
-                            <li class="list-group-item">Description: Designing using wireframe</li>
-                            <li class="list-group-item">Assigned to: Sri</li>
-                            <li class="list-group-item">Due Date: 29-11-2020</li>
-                            <li class="list-group-item "><span class="badge badge-success">
-                               Status:  Done</span>  <span class="badge badge-success">Priority: High</span> </li>
-                        </ul>
-                        <a href="#" class="btn btn-primary">Edit</a>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                            Delete
-                        </button>
-                        </div>
-                    </div>
-                </div>
-                <br/>
-
-                <div class="col-sm-8 col-md-4 my-3">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                    <ul class="list-group ">
-                        <li class="list-group-item "><h5 class="card-title">CSS</h5></li>
-                        <li class="list-group-item">Description: Designing using wireframe</li>
-                        <li class="list-group-item">Assigned to: Smitha</li>
-                        <li class="list-group-item">Due Date: 29-11-2020</li>
-                        <li class="list-group-item"><span class="badge badge-primary">
-                                Status:In-progress</span> <span class="badge badge-danger">Priority: High</span> </li>
-                    
-                    
-                    </ul>
-                    <a href="#" class="btn btn-primary">Edit</a>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                        Delete
-                    </button>
-                  </div>      
-                    </div>
-                </div>
-                <br />
-
-                <div class="col-sm-8 col-md-4 my-3">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <ul class="list-group ">
-                            <li class="list-group-item ">
-                                <h5 class="card-title">Bootstrap</h5>
-                            </li>
-                            <li class="list-group-item">Description: Bootstrap and practicing codeacademy</li>
-                            <li class="list-group-item">Assigned to: Smitha</li>
-                            <li class="list-group-item">Due Date: 2-12-2020</li>
-                            <li class="list-group-item"><span class="badge badge-info">
-                                    Status:To Do</span> <span class="badge badge-success">Priority:Low</span> </li>
-                        
-                        
-                        </ul>
-                        <a href="#" class="btn btn-primary">Edit</a>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                            Delete
-                        </button>
-                </div>
-                    </div>
-                </div>
-                <br />
-
-                
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                    <ul class="list-group ">
-                        <li class="list-group-item ">
-                            <h5 class="card-title">CSS</h5>
-                        </li>
-                        <li class="list-group-item">Description: Javascript</li>
-                        <li class="list-group-item">Assigned to: Sri</li>
-                        <li class="list-group-item">Due Date: 12-12-2020</li>
-                        <li class="list-group-item"><span class="badge badge-warning">
-                                Status:Pending</span> <span class="badge badge-primary">Priority: medium</span> </li>
-                    
-                    
-                    </ul>
-                    <a href="#" class="btn btn-primary">Edit</a>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                        Delete
-                    </button>
-                    
-                </div>
-                </div>
-                <br/>
-                <br/>
-
-                
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <ul class="list-group ">
-                            <li class="list-group-item ">
-                                <h5 class="card-title">CSS</h5>
-                            </li>
-                            <li class="list-group-item">Description: Designing using wireframe</li>
-                            <li class="list-group-item">Assigned to: Smitha</li>
-                            <li class="list-group-item">Due Date: 29-11-2020</li>
-                            <li class="list-group-item"><span class="badge badge-success">
-                                    Status:Done</span> <span class="badge badge-success">Priority:Low</span> </li>
-                        </ul>
-                        <a href="#" class="btn btn-primary">Edit</a>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                            Delete
-                        </button>
-                        </div>
-                        </div>
-                    
-                    
-                        
-                    
-                
-               
-                </div>
-                </div>
-</div>
-   
     
+    <div class="row justify-content-center">
+            
+        <!-- card 1--> 
+        <div class="col-sm-8 col-md-4 my-3 d-flex justify-content-center " >
+            <div class="card card-body" style="width: 20rem;">
+                <ul style="list-style-type:none;" >
+                    <li class="list-group-flush"><h5>Html Layout</h5></li>
+                    <li class="list-group-flush"><b>Description:</b> Designing using Wireframe</li>
+                    <li class="list-group-flush"><b>Assigned to:</b> Sri</li>
+                    <li class="list-group-flush"><b>Due Date:</b> 29-11-2020</li>
+                    <li class="list-group-flush"><span class="badge badge-success">Status:  Done</span>  <span class="badge badge-success">Priority: High</span> </li>
+                </ul>  
+                
+                    <div class="card-footer d-flex justify-content-center">
+                        <a href="./task3.html" class="btn btn-primary  mr-1">Edit</a>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            Delete
+                        </button>
+                    </div>
+                 
+            </div>                
+        </div>
+        <!-- card 2--> 
+        <div class="col-sm-8 col-md-4 my-3 d-flex justify-content-center " >
+            <div class="card card-body" style="width: 20rem;">
+                <ul style="list-style-type:none;" >
+                    <li class="list-group-flush"><h5>Html Layout</h5></li>
+                    <li class="list-group-flush"><b>Description:</b> Designing using Wireframe</li>
+                    <li class="list-group-flush"><b>Assigned to:</b> Sri</li>
+                    <li class="list-group-flush"><b>Due Date:</b> 29-11-2020</li>
+                    <li class="list-group-flush"><span class="badge badge-success">Status:  Done</span>  <span class="badge badge-success">Priority: High</span> </li>
+                </ul>  
+                
+                    <div class="card-footer d-flex justify-content-center">
+                        <a href="#" class="btn btn-primary  mr-1">Edit</a>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            Delete
+                        </button>
+                    </div>
+            </div> 
+        </div>
+        <!-- card 3--> 
+        <div class="col-sm-8 col-md-4 my-3 d-flex justify-content-center " >
+            <div class="card card-body" style="width: 20rem;">
+                <ul style="list-style-type:none;" >
+                    <li class="list-group-flush"><h5>Html Layout</h5></li>
+                    <li class="list-group-flush"><b>Description:</b> Designing using Wireframe</li>
+                    <li class="list-group-flush"><b>Assigned to:</b> Sri</li>
+                    <li class="list-group-flush"><b>Due Date:</b> 29-11-2020</li>
+                    <li class="list-group-flush"><span class="badge badge-success">Status:  Done</span>  <span class="badge badge-success">Priority: High</span> </li>
+                </ul>  
+                
+                    <div class="card-footer d-flex justify-content-center">
+                        <a href="#" class="btn btn-primary  mr-1">Edit</a>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            Delete
+                        </button>
+                    </div>
+            </div> 
+        </div>
+        <!-- card 4--> 
+        <div class="col-sm-8 col-md-4 my-3 d-flex justify-content-center " >
+            <div class="card card-body" style="width: 20rem;">
+                <ul style="list-style-type:none;" >
+                    <li class="list-group-flush"><h5>Html Layout</h5></li>
+                    <li class="list-group-flush"><b>Description:</b> Designing using Wireframe</li>
+                    <li class="list-group-flush"><b>Assigned to:</b> Sri</li>
+                    <li class="list-group-flush"><b>Due Date:</b> 29-11-2020</li>
+                    <li class="list-group-flush"><span class="badge badge-success">Status:  Done</span>  <span class="badge badge-success">Priority: High</span> </li>
+                </ul>  
+                
+                    <div class="card-footer d-flex justify-content-center">
+                        <a href="#" class="btn btn-primary  mr-1">Edit</a>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            Delete
+                        </button>
+                    </div>
+            </div> 
+        </div>
+        <!-- card 5--> 
+        <div class="col-sm-8 col-md-4 my-3 d-flex justify-content-center " >
+            <div class="card card-body" style="width: 20rem;">
+                <ul style="list-style-type:none;" >
+                    <li class="list-group-flush"><h5>Html Layout</h5></li>
+                    <li class="list-group-flush"><b>Description:</b> Designing using Wireframe</li>
+                    <li class="list-group-flush"><b>Assigned to:</b> Sri</li>
+                    <li class="list-group-flush"><b>Due Date:</b> 29-11-2020</li>
+                    <li class="list-group-flush"><span class="badge badge-success">Status:  Done</span>  <span class="badge badge-success">Priority: High</span> </li>
+                </ul>  
+                
+                    <div class="card-footer d-flex justify-content-center">
+                        <a href="#" class="btn btn-primary  mr-1">Edit</a>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            Delete
+                        </button>
+                    </div>
+            </div> 
+        </div>
+        
+    </div>
 </body>
 </html>
+
+
