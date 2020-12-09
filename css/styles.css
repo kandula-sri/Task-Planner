@@ -1,6 +1,6 @@
 .container {
   width: 80%;
-  clear: both;
+ /* clear: both;*/
   border: .5em;
   border-style: none;
   background-color: #a5d8f057 ;
@@ -37,6 +37,7 @@
 
 .card-body{
 background-color: #b9dee9;
+width: 20rem;
 }
 
 
@@ -53,7 +54,10 @@ background-color: #8db5db;
 .list-group-item{
 align-self: center;
 }
-
+ 
+ul{
+  list-style-type:none;
+}
 /*li{justify-content: center;}
 
 .list-group-item{
