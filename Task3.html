@@ -19,7 +19,7 @@
                 <input type="text" class="form-control" id="TaskName">
               
                 <label for="priority">Priority</label>
-                <select class="form-control" id="status">
+                <select class="form-control" id="TaskPriority">
                   <option>High</option>
                   <option>Low</option>
                   <option>Medium</option>
@@ -27,16 +27,16 @@
               </div>
               <div class="form-group">
                 <label for="Desc">Description:</label>
-                <textarea class="form-control" rows="5" id="Desc"></textarea>
+                <textarea class="form-control" rows="5" id="TaskDesc"></textarea>
                 
               </div>
               <div class="form-group">
                 <label for="assigned-to">Assigned To:</label>
-                <input type="text" class="form-control" id="assigned-to">
+                <input type="text" class="form-control" id="TaskAssignedto">
               </div>
               <div class="form-group mt-3">
                 <label for="status">Status</label>
-                <select class="form-control" id="status">
+                <select class="form-control" id="TaskStatus">
                   <option>To Do</option>
                   <option>InProgress</option>
                   <option>Review</option>
@@ -45,11 +45,11 @@
               </div>
               <div class="form-group">
                 <label for="comment">Comment:</label>
-                <input type="text" class="form-control" id="Comment">
+                <input type="text" class="form-control" id="TaskComment">
               </div>
               <div class="form-group">
                 <label for="Due_Date">Due Date:</label>
-                <input type="date" id="taskDate" style="widows:40vw;height:4vh" name="Date" required="">
+                <input type="date" id="TaskDate" style="widows:40vw;height:4vh" name="Date" required="">
               </div>
               
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
@@ -58,5 +58,6 @@
           </form>
       </div>
     </section> 
+    <script src="js/index.js"></script>
   </body>
 </html>
