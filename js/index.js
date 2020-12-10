@@ -1,40 +1,56 @@
-// Select the New Task Form
-const newTaskForm = document.querySelector('Task Form');
 
-// Add an 'onsubmit' event listener
+// Select the Task Form
+const newTaskForm = document.querySelector('#TaskForm');
+
+// Add an 'onsave' event listener
 newTaskForm.addEventListener('submit', (event) => {
-    // Prevent default action
+    // Prevent default action of refreshing the screen
     event.preventDefault();
-
-    // Select the inputs
-    const newTaskNameInput = document.querySelector('#TaskName');
-     const newTaskPriority = document.querySelector('#TaskPriority');
-    const newTaskDescription = document.querySelector('#TaskDesc');
-    const newTaskAssignedTo = document.querySelector('#TaskAssignedto');
-     const newTaskStatus = document.querySelector('#TaskStatus');
-    const newTaskDueDate = document.querySelector('#TaskDueDate');
-    const errorMessage = document.querySelector('#alertMessage');
-   
+     
+    // Select the input fields
+    const TaskNameInput = document.querySelector('#TaskName');
+    const TaskPriority = document.querySelector('#TaskPriority');
+    const TaskDescription = document.querySelector('#TaskDesc');
+    const TaskAssignedTo = document.querySelector('#TaskAssignedto');
+    const TaskStatus = document.querySelector('#TaskStatus');
+    const TaskDueDate = document.querySelector('#TaskDueDate');
     
+    let errorMessage = document.querySelector('#alertMesg');
+           
+     
+     /*  Validation code for input fields*/
+    alert("name:"+TaskNameInput.value);
+    if(!validFormFieldInput(TaskNameInput.value)){
+        
+        errorMessage.innerHTML = "Please Enter a Valid Task Name";
+        errorMessage.style.display = "block";
+        }
+    else{
+           if(!validFormFieldInput(TaskDescription.value)){
+               
+                errorMessage.innerHTML = "Please Enter a Valid Task Description";
+        
+                errorMessage.style.display = "block";
+            }
+            else{
+        
+                if(!validFormFieldInput(TaskAssignedTo.value)){
+                errorMessage.innerHTML = "Please Enter a Valid Task Assignee";
+                errorMessage.style.display = "block";
+                }
+                else{
+                    errorMessage.style.display = "none";
+                }
+             }
+     
+         } 
     
-    /*
-        Validation code here
-    */
-
-    // Get the values of the inputs
-    const name = newTaskNameInput.value;
-    const description = newTaskDesc.value;
-    const assignedTo = newTaskAssignedTo.value;
-    const dueDate = newTaskDueDate.value;
-    if(!validFormFieldInput(name)){
-        errorMessage.innerHTML = "Invalid name input";
-        errorMessage.style.display = "block"
-    }else{
-        errorMessage.style.display = "none"
-    }
 
 });
 
 function validFormFieldInput(data){
-    return data !== null && data !== '';
+
+        return data !== null && data !== '';
+
+    return data !== null && data !== ''
 }
