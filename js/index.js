@@ -1,4 +1,3 @@
-
 // Select the Task Form
 const newTaskForm = document.querySelector('#TaskForm');
 
@@ -49,8 +48,5 @@ newTaskForm.addEventListener('submit', (event) => {
 });
 
 function validFormFieldInput(data){
-
-        return data !== null && data !== '';
-
     return data !== null && data !== ''
 }
