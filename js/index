@@ -7,12 +7,12 @@ newTaskForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     // Select the inputs
-    const newTaskNameInput = document.querySelector('TaskName');
-     const newTaskPriority = document.querySelector('TaskPriority');
-    const newTaskDescription = document.querySelector('TaskDesc');
-    const newTaskAssignedTo = document.querySelector('TaskAssignedto');
-     const newTaskStatus = document.querySelector('TaskStatus');
-    const newTaskDueDate = document.querySelector('TaskDueDate');
+    const newTaskNameInput = document.querySelector('#TaskName');
+     const newTaskPriority = document.querySelector('#TaskPriority');
+    const newTaskDescription = document.querySelector('#TaskDesc');
+    const newTaskAssignedTo = document.querySelector('#TaskAssignedto');
+     const newTaskStatus = document.querySelector('#TaskStatus');
+    const newTaskDueDate = document.querySelector('#TaskDueDate');
     const errorMessage = document.querySelector('#alertMessage');
    
     
