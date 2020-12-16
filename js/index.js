@@ -1,6 +1,9 @@
 // Select the Task Form
-const newTaskForm = document.querySelector('#TaskForm');
+const taskManager = new TaskManager(0);
 
+
+const newTaskForm = document.querySelector('#TaskForm');
+alert("begin:");
 // Add an 'onsave' event listener
 newTaskForm.addEventListener('submit', (event) => {
     // Prevent default action of refreshing the screen
@@ -12,13 +15,26 @@ newTaskForm.addEventListener('submit', (event) => {
     const TaskDescription = document.querySelector('#TaskDesc');
     const TaskAssignedTo = document.querySelector('#TaskAssignedto');
     const TaskStatus = document.querySelector('#TaskStatus');
-    const TaskDueDate = document.querySelector('#TaskDueDate');
+    const TaskComment = document.querySelector('#TaskComment');
+    const TaskDueDate = document.querySelector('#TaskDate');
     
     let errorMessage = document.querySelector('#alertMesg');
            
+    const taskname = TaskNameInput.value;
+    const priority = TaskPriority.value;
+    const description = TaskDescription.value;
+    const assignedto = TaskAssignedTo.value;
+    const taskstatus = TaskStatus.value;
+    const comment = TaskComment.value;
+    const duedate = TaskDueDate.value;
+
+    
+    
+    
+
      
      /*  Validation code for input fields*/
-    alert("name:"+TaskNameInput.value);
+
     if(!validFormFieldInput(TaskNameInput.value)){
         
         errorMessage.innerHTML = "Please Enter a Valid Task Name";
@@ -41,12 +57,25 @@ newTaskForm.addEventListener('submit', (event) => {
                     errorMessage.style.display = "none";
                 }
              }
-     
-         } 
-    
+        }
+   // Get the Javascript object new Date, give it the argument newBook.date, and assign it to a variable
+    const taskDate = new Date(TaskDueDate.value);
+    // Format date to be dd/mm/yyyy
+    const formattedDate = taskDate.getDate() + '/' + (taskDate.getMonth() + 1) + '/' + taskDate.getFullYear();
+       alert("date"+formattedDate);
+taskManager.addTask(taskname,priority,description,assignedto,taskstatus,comment,formattedDate);
+     TaskNameInput.value = '';
+     TaskPriority.value = '';
+     TaskDescription.value = '';
+     TaskAssignedTo.value = '';
+     TaskStatus.value = '';
+     TaskComment.value = '';   
+     TaskDueDate.value = '';
 
 });
 
+
+
 function validFormFieldInput(data){
-    return data !== null && data !== ''
+        return data !== null && data !== '';
 }
