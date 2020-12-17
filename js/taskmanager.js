@@ -34,7 +34,21 @@ class TaskManager {
     <td>${newTask.comment}</td>`;
     list.appendChild(row);
   */
-  
+  /* Update status*/ 
+  // Method to get the task id to update status
+  getTaskById(taskId) {
+    let foundTask;
+
+    for (let i = 0; i < this.tasks.length; i++) {
+
+      const task = this.tasks[i];
+
+      if(task.id === taskId){
+        foundTask = task;
+      };
+    };
+    return foundTask;
+  };
 
 render() {
       const tasksHtmlList = [];
@@ -43,7 +57,7 @@ render() {
         const task = this.tasks[i];
             
         const taskHtml = createTaskHtml(task.name, task.description, task.priority,task.assignedto, task.status, task.comment, task.duedate);
-
+        
         tasksHtmlList.push(taskHtml);
       };
 
@@ -61,7 +75,7 @@ render() {
               <li class="list-group-item mt-2">
               <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
               <h6>${task}</h6>
-              <span class="badge ${status === 'TO Do' ? 'badge-danger' : 'badge-success'}">${status}</span>
+              <span class="badge ${status === 'TODO' ? 'badge-danger' : 'badge-success'}">${status}</span>
               </div>
               <div class="d-flex w-100 mb-3 justify-content-between">
               <small>Priority: ${priority}</small>
@@ -71,7 +85,7 @@ render() {
               </div>
               <div class="d-flex w-100 mt-3 justify-content-between align-items-center">
               <small>Task Due Date : ${duedate}</small>
-              <button class="btn btn-outline-success done-button ${status === 'TO DO' ? 'visible' : 'invisible'}">Mark As Do</button>
+              <button class="btn btn-outline-success done-button ${status === 'TODO' ? 'visible' : 'invisible'}">Done</button>
               </div>
               </li>
             `;

@@ -77,4 +77,30 @@ newTaskForm.addEventListener('submit', (event) => {
 
 function validFormFieldInput(data){
         return data !== null && data !== '';
-}
+};
+
+/* Update status */
+const taskCard = document.querySelector('#task-card');
+
+// Add an 'onclick' event listener to the Tasks List
+taskCard.addEventListener('click', (event) => {
+    // Check if a "Mark As Read" button was clicked
+    if (event.target.classList.contains('done-button')) {
+        // Get the parent Task
+        const parentTask = event.target.parentElement;
+
+        // Get the taskId of the parent Task.
+        const taskId = Number(parentTask.id);
+
+        // Get the task from the TaskManager using the taskId
+        const task = taskManager.getTaskById(taskId);
+
+        // Update the task status to 'DONE'
+         task.status = 'DONE';
+        
+
+        // Render the tasks
+        taskManager.render();
+    }
+
+  });
