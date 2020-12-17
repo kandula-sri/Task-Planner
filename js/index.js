@@ -30,51 +30,46 @@ newTaskForm.addEventListener('submit', (event) => {
      /*  Validation code for input fields*/
 
     if(!validFormFieldInput(TaskNameInput.value)){
-        
         errorMessage.innerHTML = "Please Enter a Valid Task Name";
         errorMessage.style.display = "block";
         }
-    else{
-           if(!validFormFieldInput(TaskDescription.value)){
+    else if(!validFormFieldInput(TaskPriority.value)){
+               
+            errorMessage.innerHTML = "Please Select a Task Priority";
+    
+            errorMessage.style.display = "block";
+        }    
+    else if(!validFormFieldInput(TaskDescription.value)){
                
                 errorMessage.innerHTML = "Please Enter a Valid Task Description";
         
                 errorMessage.style.display = "block";
             }
-            else{
-        
-                if(!validFormFieldInput(TaskAssignedTo.value)){
+    else if(!validFormFieldInput(TaskAssignedTo.value)){
                 errorMessage.innerHTML = "Please Enter a Valid Task Assignee";
                 errorMessage.style.display = "block";
                 }
-                else{
-                    if(!validFormFieldInput(TaskDueDate.value)){
+    else if(!validFormFieldInput(TaskStatus.value)){
+               
+                    errorMessage.innerHTML = "Please Select a Task Status";
+            
+                    errorMessage.style.display = "block";
+                }
+    else if(!validFormFieldInput(TaskDueDate.value)){
                         errorMessage.innerHTML = "Please Enter/Select a Valid Task Due Date"
                         errorMessage.style.display = "block";
                     }
-                    else{
-
-                    errorMessage.style.display = "none";
-                    //Get the Javascript object new Date, give it the argument duedate, and assign it to a variable
-                        const taskDate = new Date(TaskDueDate.value);
-                        // Format date to be dd/mm/yyyy
-                        const formattedDate = taskDate.getDate() + '/' + (taskDate.getMonth() + 1) + '/' + taskDate.getFullYear();
-                        
-                    taskManager.addTask(taskname,priority,description,assignedto,taskstatus,comment,formattedDate);
-
-                    TaskNameInput.value = '';
-                    TaskPriority.value = '';
-                    TaskDescription.value = '';
-                    TaskAssignedTo.value = '';
-                    TaskStatus.value = '';
-                    TaskComment.value = '';   
-                    TaskDueDate.value = '';
-
-                    }
-                }
-             }
+    else{
+            errorMessage.style.display = "none";
+            //Get the Javascript object new Date, give it the argument duedate, and assign it to a variable
+            const taskDate = new Date(TaskDueDate.value);
+            // Format date to be dd/mm/yyyy
+            const formattedDate = taskDate.getDate() + '/' + (taskDate.getMonth() + 1) + '/' + taskDate.getFullYear();
+            taskManager.addTask(taskname,priority,description,assignedto,taskstatus,comment,formattedDate);
+            event.target.reset();
         }
-   
+   // Render the books
+   taskManager.render(); 
      
 });
 
