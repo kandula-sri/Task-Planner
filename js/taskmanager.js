@@ -50,6 +50,25 @@ class TaskManager {
     return foundTask;
   };
 
+  save() {
+    if(localStorage.getItem('tasks')) {
+      localStorage.removeItem('tasks')
+    }
+    const tasksJson = JSON.stringify(this.tasks);
+    localStorage.setItem('tasks', tasksJson)
+  };
+
+    load() {
+   
+      const tasksString = localStorage.getItem('tasks');
+      const tasksJson = JSON.parse(tasksString);
+      
+      tasksJson.map(eachtask => {
+        const {name,description, priority, assignedto, status, comment, duedate } = eachtask;
+        this.addTask(name,description, priority, assignedto, status, comment, duedate);
+      });
+    };
+
 render() {
       const tasksHtmlList = [];
 
