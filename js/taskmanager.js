@@ -1,10 +1,10 @@
 class TaskManager {
 // Create a constructor with a parameter currentid set to 0
-  constructor(currentId = 0) {
+  constructor(currentId) {
     // Initialize an empty array to save the tasks added 
     this.tasks= []; 
     // Set the currentId value to currentId
-    this.currentId = currentId;
+    this.currentId = currentId || 0;
   }
   /*Add new tasks */
   // Create a method with an object to add a task
@@ -21,6 +21,7 @@ class TaskManager {
     }
     // push the new task into the array 
     this.tasks.push(newTask);
+    
   };
    
    /* const list = document.querySelector('#task-list');
@@ -67,6 +68,13 @@ class TaskManager {
         const {name,description, priority, assignedto, status, comment, duedate } = eachtask;
         this.addTask(name,description, priority, assignedto, status, comment, duedate);
       });
+      if (localStorage.getItem('currentId')) {
+        const currentId = localStorage.getItem('currentId');
+
+        this.currentId = Number(currentId);
+      }
+
+      this.render();
     };
 
 render() {
@@ -75,8 +83,8 @@ render() {
       for(let i = 0; i < this.tasks.length; i++) {
         const task = this.tasks[i];
             
-        const taskHtml = createTaskHtml(task.name, task.description, task.priority,task.assignedto, task.status, task.comment, task.duedate);
-        
+        const taskHtml = createTaskHtml( task.name, task.description, task.priority,task.assignedto, task.status, task.comment, task.duedate,task.id);
+        alert(task.id);
         tasksHtmlList.push(taskHtml);
       };
 
@@ -88,10 +96,10 @@ render() {
     };
     
   }
-    const createTaskHtml = (task,description, priority,assignedto,status,comment, duedate) => {
+    const createTaskHtml = (task,description, priority,assignedto,status,comment, duedate,id) => {
 
       return `
-              <li class="list-group-item mt-2">
+              <li id=${id}class="list-group-item mt-2">
               <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
               <h6>${task}</h6>
               <span class="badge ${status === 'TODO' ? 'badge-danger' : 'badge-success'}">${status}</span>

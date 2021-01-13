@@ -1,5 +1,5 @@
 // Select the Task Form
-const taskManager = new TaskManager(0);
+let taskManager = new TaskManager(0);
 // Load task object from local storage 
 if(localStorage.getItem('tasks')) {
     taskManager.load();
@@ -94,17 +94,18 @@ taskCard.addEventListener('click', (event) => {
     // Check if a "Mark As done" button was clicked
     if (event.target.classList.contains('done-button')) {
         // Get the parent Task
-        const parentTask = event.target.parentElement;
-
+       const parentTask =event.target.parentElement.parentElement;
+      alert(parentTask);  
         // Get the taskId of the parent Task.
-        const taskId = Number(parentTask.id);
+        const taskId = Number(parentTask.taskId);
+       alert(taskId);
 
         // Get the task from the TaskManager using the taskId
         const task = taskManager.getTaskById(taskId);
-   alert(taskId);
+  
         // Update the task status to 'DONE'
          task.status = 'DONE';
-    alert(taskId);
+    alert(task.status,task.taskId);
          taskManager.save();
 
         // Render the tasks
@@ -113,17 +114,17 @@ taskCard.addEventListener('click', (event) => {
 
   });
 
-  const changeToPending = (button, id) =>{
-// Find the task id that matches the parent id
-const task = taskManager.tasks.find(task => task.id === id);
-task.status = 'Done';
-taskManager.save();
-const parentBook = button.parentElement;
+//   const changeToPending = (button, id) =>{
+// // Find the task id that matches the parent id
+// const task = taskManager.tasks.find(task => task.id === id);
+// task.status = 'Done';
+// taskManager.save();
+// const parentBook = button.parentElement;
 
-//  If statement to garantee the changes on the UI matches the array of books
- const badge = parentTask.getElementsByClassName('badge-status');
-   badge[0].classList.remove('badge-danger');
-   badge[0].classList.add('badge-warning');
-   badge[0].innerHTML = `Pending`;
-   button.remove();
-}
+// //  If statement to garantee the changes on the UI matches the array of books
+//  const badge = parentTask.getElementsByClassName('badge-status');
+//    badge[0].classList.remove('badge-danger');
+//    badge[0].classList.add('badge-warning');
+//    badge[0].innerHTML = `Pending`;
+//    button.remove();
+// }
