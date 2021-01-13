@@ -95,16 +95,19 @@ taskCard.addEventListener('click', (event) => {
     if (event.target.classList.contains('done-button')) {
         // Get the parent Task
        const parentTask =event.target.parentElement.parentElement;
-      alert(parentTask);  
+        
         // Get the taskId of the parent Task.
-        const taskId = Number(parentTask.taskId);
-       alert(taskId);
+       //const taskId = Number(parentTask.dataset.TaskDescription);
+       const taskId = Number(parentTask.dataset.taskId);
+        
+        
+       alert("ID:"+ taskId);
 
         // Get the task from the TaskManager using the taskId
         const task = taskManager.getTaskById(taskId);
   
         // Update the task status to 'DONE'
-         task.status = 'DONE';
+         task.status = "DONE";
     alert(task.status,task.taskId);
          taskManager.save();
 

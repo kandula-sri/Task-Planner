@@ -84,7 +84,7 @@ render() {
         const task = this.tasks[i];
             
         const taskHtml = createTaskHtml( task.name, task.description, task.priority,task.assignedto, task.status, task.comment, task.duedate,task.id);
-        alert(task.id);
+        
         tasksHtmlList.push(taskHtml);
       };
 
@@ -92,14 +92,14 @@ render() {
 
         const tasksList = document.querySelector('#task-card');
         tasksList.innerHTML = tasksHtml;
-
+        
     };
     
   }
     const createTaskHtml = (task,description, priority,assignedto,status,comment, duedate,id) => {
 
       return `
-              <li id=${id}class="list-group-item mt-2">
+              <li data-task-id=${id} class="list-group-item">
               <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
               <h6>${task}</h6>
               <span class="badge ${status === 'TODO' ? 'badge-danger' : 'badge-success'}">${status}</span>
