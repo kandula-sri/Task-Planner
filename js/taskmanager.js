@@ -1,10 +1,10 @@
 class TaskManager {
 // Create a constructor with a parameter currentid set to 0
-  constructor(currentId = 0) {
+  constructor(currentId) {
     // Initialize an empty array to save the tasks added 
     this.tasks= []; 
     // Set the currentId value to currentId
-    this.currentId = currentId;
+    this.currentId = currentId || 0;
   }
   /*Add new tasks */
   // Create a method with an object to add a task
@@ -15,13 +15,36 @@ class TaskManager {
       priority : priority,
       description: description,
       assignedto: assignedto,
-      status: 'TODO',
+      status: status,
       comment: comment,
       duedate: duedate,
     }
     // push the new task into the array 
     this.tasks.push(newTask);
+    
   };
+
+  // Create the deleteTask method
+  deleteTask(taskId) {
+    // Create an empty array and store it in a new variable, newTasks
+    const newTasks = [];
+
+    // Loop over the tasks
+    for (let i = 0; i < this.tasks.length; i++) {
+        // Get the current task in the loop
+        const task = this.tasks[i];
+
+        // Check if the task id is not the task id passed in as a parameter
+        if (task.id !== taskId) {
+            // Push the task to the newTasks array
+            newTasks.push(task);
+        }
+    }
+
+    // Set this.tasks to newTasks
+    this.tasks = newTasks;
+    
+}
    
    /* const list = document.querySelector('#task-list');
     const row = document.createElement('tr');
@@ -51,10 +74,14 @@ class TaskManager {
   };
 
   save() {
+
+    //Remove the element if called for deletion
     if(localStorage.getItem('tasks')) {
       localStorage.removeItem('tasks')
+      
     }
     const tasksJson = JSON.stringify(this.tasks);
+    
     localStorage.setItem('tasks', tasksJson)
   };
 
@@ -67,6 +94,13 @@ class TaskManager {
         const {name,description, priority, assignedto, status, comment, duedate } = eachtask;
         this.addTask(name,description, priority, assignedto, status, comment, duedate);
       });
+      if (localStorage.getItem('currentId')) {
+        const currentId = localStorage.getItem('currentId');
+
+        this.currentId = Number(currentId);
+      }
+
+      this.render();
     };
 
 render() {
@@ -75,7 +109,7 @@ render() {
       for(let i = 0; i < this.tasks.length; i++) {
         const task = this.tasks[i];
             
-        const taskHtml = createTaskHtml(task.name, task.description, task.priority,task.assignedto, task.status, task.comment, task.duedate);
+        const taskHtml = createTaskHtml( task.name, task.description, task.priority,task.assignedto, task.status, task.comment, task.duedate,task.id);
         
         tasksHtmlList.push(taskHtml);
       };
@@ -84,18 +118,19 @@ render() {
 
         const tasksList = document.querySelector('#task-card');
         tasksList.innerHTML = tasksHtml;
-
+        
     };
     
   }
-    const createTaskHtml = (task,description, priority,assignedto,status,comment, duedate) => {
+    const createTaskHtml = (task,description, priority,assignedto,status,comment, duedate,id) => {
 
       return `
-              <li class="list-group-item mt-2">
+              <li data-task-id=${id} class="list-group-item">
               <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
               <h6>${task}</h6>
-              <span class="badge ${status === 'TODO' ? 'badge-danger' : 'badge-success'}">${status}</span>
+              <span class="badge ${status === 'To Do' ? 'badge-danger' : 'badge-success'}">${status}</span>
               </div>
+              
               <div class="d-flex w-100 mb-3 justify-content-between">
               <small>Priority: ${priority}</small>
               <small>Description: ${description}</small>
@@ -104,12 +139,14 @@ render() {
               </div>
               <div class="d-flex w-100 mt-3 justify-content-between align-items-center">
               <small>Task Due Date : ${duedate}</small>
-              <button class="btn btn-outline-success done-button ${status === 'TODO' ? 'visible' : 'invisible'}">Done</button>
+              <button class="btn btn-outline-success done-button ${status === 'DONE' ? 'invisible' : 'visible'}">Done</button>
+              <button class="btn btn-outline-danger delete-button">Delete Task</button>
               </div>
               </li>
             `;
     }
 
-
+// original button code
+//<button class="btn btn-outline-success done-button ${status === 'TODO' ? 'visible' : 'invisible'}">Done</button>
 
   

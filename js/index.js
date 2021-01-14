@@ -1,5 +1,5 @@
 // Select the Task Form
-const taskManager = new TaskManager(0);
+let taskManager = new TaskManager(0);
 // Load task object from local storage 
 if(localStorage.getItem('tasks')) {
     taskManager.load();
@@ -91,39 +91,35 @@ const taskCard = document.querySelector('#task-card');
 
 // Add an 'onclick' event listener to the Tasks List
 taskCard.addEventListener('click', (event) => {
-    // Check if a "Mark As done" button was clicked
+  // Get the parent Task
+  const parentTask = event.target.parentElement.parentElement;
+
+  // Get the taskId of the parent Task.
+  const taskId = Number(parentTask.dataset.taskId);
+    
+  // Check if a "Mark As done" button was clicked
     if (event.target.classList.contains('done-button')) {
-        // Get the parent Task
-        const parentTask = event.target.parentElement;
-
-        // Get the taskId of the parent Task.
-        const taskId = Number(parentTask.id);
-
-        // Get the task from the TaskManager using the taskId
+        
+       // Get the task from the TaskManager using the taskId
         const task = taskManager.getTaskById(taskId);
-   alert(taskId);
+  
         // Update the task status to 'DONE'
-         task.status = 'DONE';
-    alert(taskId);
-         taskManager.save();
-
-        // Render the tasks
-        taskManager.render();
+         task.status = "DONE";
+       
+           
     }
+     // Check if a "Delete" button was clicked
+    if (event.target.classList.contains('delete-button')) {
+      
+      // Delete the task
+      taskManager.deleteTask(taskId);
+    
+  }
+  // Save the tasks to localStorage
+  taskManager.save();
+
+  // Render the tasks
+  taskManager.render();
 
   });
 
-  const changeToPending = (button, id) =>{
-// Find the task id that matches the parent id
-const task = taskManager.tasks.find(task => task.id === id);
-task.status = 'Done';
-taskManager.save();
-const parentBook = button.parentElement;
-
-//  If statement to garantee the changes on the UI matches the array of books
- const badge = parentTask.getElementsByClassName('badge-status');
-   badge[0].classList.remove('badge-danger');
-   badge[0].classList.add('badge-warning');
-   badge[0].innerHTML = `Pending`;
-   button.remove();
-}
