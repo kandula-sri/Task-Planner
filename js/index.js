@@ -1,5 +1,11 @@
 // Select the Task Form
-const taskManager = new TaskManager(0);
+let taskManager = new TaskManager(0);
+// Load task object from local storage 
+if(localStorage.getItem('tasks')) {
+    taskManager.load();
+} else {
+  taskManager = new TaskManager(0);  
+};
 
 const newTaskForm = document.querySelector('#TaskForm');
 
@@ -66,9 +72,10 @@ newTaskForm.addEventListener('submit', (event) => {
             // Format date to be dd/mm/yyyy
             const formattedDate = taskDate.getDate() + '/' + (taskDate.getMonth() + 1) + '/' + taskDate.getFullYear();
             taskManager.addTask(taskname,priority,description,assignedto,taskstatus,comment,formattedDate);
+            taskManager.save();
             event.target.reset();
         }
-   // Render the books
+   // Render the tasks
    taskManager.render(); 
      
 });
@@ -84,23 +91,35 @@ const taskCard = document.querySelector('#task-card');
 
 // Add an 'onclick' event listener to the Tasks List
 taskCard.addEventListener('click', (event) => {
-    // Check if a "Mark As Read" button was clicked
+  // Get the parent Task
+  const parentTask = event.target.parentElement.parentElement;
+
+  // Get the taskId of the parent Task.
+  const taskId = Number(parentTask.dataset.taskId);
+    
+  // Check if a "Mark As done" button was clicked
     if (event.target.classList.contains('done-button')) {
-        // Get the parent Task
-        const parentTask = event.target.parentElement;
-
-        // Get the taskId of the parent Task.
-        const taskId = Number(parentTask.id);
-
-        // Get the task from the TaskManager using the taskId
-        const task = taskManager.getTaskById(taskId);
-
-        // Update the task status to 'DONE'
-         task.status = 'DONE';
         
-
-        // Render the tasks
-        taskManager.render();
+       // Get the task from the TaskManager using the taskId
+        const task = taskManager.getTaskById(taskId);
+  
+        // Update the task status to 'DONE'
+         task.status = "Done";
+       
+           
     }
+     // Check if a "Delete" button was clicked
+    if (event.target.classList.contains('delete-button')) {
+      
+      // Delete the task
+      taskManager.deleteTask(taskId);
+    
+  }
+  // Save the tasks to localStorage
+  taskManager.save();
+
+  // Render the tasks
+  taskManager.render();
 
   });
+
