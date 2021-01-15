@@ -104,7 +104,7 @@ taskCard.addEventListener('click', (event) => {
         const task = taskManager.getTaskById(taskId);
   
         // Update the task status to 'DONE'
-         task.status = "DONE";
+         task.status = "Done";
        
            
     }

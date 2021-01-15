@@ -139,7 +139,7 @@ render() {
               </div>
               <div class="d-flex w-100 mt-3 justify-content-between align-items-center">
               <small>Task Due Date : ${duedate}</small>
-              <button class="btn btn-outline-success done-button ${status === 'DONE' ? 'invisible' : 'visible'}">Done</button>
+              <button class="btn btn-outline-success done-button ${status === 'Done' ? 'invisible' : 'visible'}">Done</button>
               <button class="btn btn-outline-danger delete-button">Delete Task</button>
               </div>
               </li>
@@ -148,5 +148,6 @@ render() {
 
 // original button code
 //<button class="btn btn-outline-success done-button ${status === 'TODO' ? 'visible' : 'invisible'}">Done</button>
+module.exports = TaskManager;
 
   
