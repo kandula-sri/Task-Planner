@@ -1,4 +1,6 @@
 // Select the Task Form
+
+
 let taskManager = new TaskManager(0);
 // Load task object from local storage 
 if(localStorage.getItem('tasks')) {
@@ -6,7 +8,8 @@ if(localStorage.getItem('tasks')) {
 } else {
   taskManager = new TaskManager(0);  
 };
-
+let updateFlag="False";
+let taskId = 000;
 const newTaskForm = document.querySelector('#TaskForm');
 
 // Add an 'onsave' event listener
@@ -32,9 +35,6 @@ newTaskForm.addEventListener('submit', (event) => {
     const taskstatus = TaskStatus.value;
     const comment = TaskComment.value;
     const duedate = TaskDueDate.value;
-    var varDate = new Date(duedate); //dd-mm-YYYY
-    var today = new Date();
-    today.setHours(0,0,0,0);
      
      /*  Validation code for input fields*/
 
@@ -65,26 +65,30 @@ newTaskForm.addEventListener('submit', (event) => {
                     errorMessage.style.display = "block";
                 }
     else if(!validFormFieldInput(TaskDueDate.value)){
-                    errorMessage.innerHTML = "Please Enter/Select a Valid Task Due Date"
+                        errorMessage.innerHTML = "Please Enter/Select a Valid Task Due Date"
                         errorMessage.style.display = "block";
                     }
-     else if (varDate < today){
-                  
-                    errorMessage.innerHTML = "Please Enter/Select Task Due Date greater than or equal to today"
-                    errorMessage.style.display = "block";
-                  }
     else{
             errorMessage.style.display = "none";
             //Get the Javascript object new Date, give it the argument duedate, and assign it to a variable
             const taskDate = new Date(TaskDueDate.value);
-             // Format date to be dd/mm/yyyy
+            // Format date to be dd/mm/yyyy
             const formattedDate = taskDate.getDate() + '/' + (taskDate.getMonth() + 1) + '/' + taskDate.getFullYear();
-            // Add the task
+            if(updateFlag!='True'){
             taskManager.addTask(taskname,priority,description,assignedto,taskstatus,comment,formattedDate);
             taskManager.save();
             event.target.reset();
-
-            
+            }
+            else{
+              alert("inside the else");
+              const taskDate = new Date(TaskDueDate.value);
+            // Format date to be dd/mm/yyyy
+            const formattedDate = taskDate.getDate() + '/' + (taskDate.getMonth() + 1) + '/' + taskDate.getFullYear();
+              taskManager.updateTask(taskId,taskname,priority,description,assignedto,taskstatus,comment,formattedDate);
+             
+             
+            event.target.reset();
+            }
         }
    // Render the tasks
    taskManager.render(); 
@@ -92,7 +96,7 @@ newTaskForm.addEventListener('submit', (event) => {
 });
 
 
-// Check to see the input data enetered is not null
+
 function validFormFieldInput(data){
         return data !== null && data !== '';
 };
@@ -131,6 +135,36 @@ taskCard.addEventListener('click', (event) => {
       
       }
   }
+
+  
+
+   // Check if a "Update" button was clicked
+   if (event.target.classList.contains('update-button')) {
+    //smitha
+    
+  //Logic to update the item
+
+    // update the task
+     // Get the task from the TaskManager using the taskId
+     const task = taskManager.getTaskById(taskId);
+    
+    document.getElementById("TaskName").value =task.name;
+    document.getElementById("TaskPriority").value =task.priority;
+    document.getElementById("TaskDesc").value =task.description;
+    document.getElementById("TaskAssignedto").value =task.assignedto;
+    document.getElementById("TaskStatus").value =task.status;
+    document.getElementById("TaskComment").value =task.comment;
+    document.getElementById("TaskDate").value =task.duedate;
+
+  //  task.name = document.getElementById("TaskName").value ;
+  //   document.getElementById("TaskPriority").value =task.priority;
+  // task.description=document.getElementById("TaskDesc").value
+  //   document.getElementById("TaskAssignedto").value =task.assignedto;
+  //   document.getElementById("TaskStatus").value =task.status;
+  //   document.getElementById("TaskComment").value =task.comment;
+  //   document.getElementById("TaskDate").value =task.duedate;
+    updateFlag="True";
+}
 
    // Save the tasks to localStorage
    taskManager.save();
