@@ -1,4 +1,4 @@
- # Project Name
+ # Project: Task Planner 
  
 Generation Australia Bootcamp cohort-3 Task Planner Web App
 by  Sri Kandula & Smitha Shankavaram
@@ -10,8 +10,8 @@ by  Sri Kandula & Smitha Shankavaram
  
   
   ## Technologies
-* 	HTML
-*  CSS
+* 	HTML5
+*  CSS3
 * 	Bootstrap
 * 	JavaScript
 * 	Mocha TDD
