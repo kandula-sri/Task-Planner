@@ -11,20 +11,20 @@ by  Sri Kandula & Smitha Shankavaram
   
   ## Technologies
 * 	HTML
-*   CSS
+*  CSS
 * 	Bootstrap
 * 	JavaScript
 * 	Mocha TDD
 * 	NPM
-Shankavaram
 
 
-## Features
 
-* 	Create task form with Name, Description, Due date, Task priority, Task status and who it is assigned to
-*   Add task, Display task, Update task
-*   Persisting data, Delete task
-*   Unit testing add Task, deleteTask, getById functions
+  ## Features
+
+* 	Create task form with Name, Description, Due date, Task priority, Task status, Comments and who it is assigned to
+*  Add task, Display tasks, Update task status
+*  Local Storage data, Delete task
+*  Unit testing: add Task, deleteTask, getById functions
 
 
 
